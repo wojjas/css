@@ -1,0 +1,72 @@
+<style>
+    body{
+        height: 100%;
+    }
+    .horizontal-container{
+        display: flex;
+        flex-direction: row;
+        background: #add8e6;
+        height: 100%;
+        width: 100%;
+    }
+    .vertical-container{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 0.6;
+        height: 100%;
+        margin: auto;   /*absorb extra space, makes this item centered in both axis*/
+        background: lightcyan;
+    }
+
+    #AL, #AR{
+        background: lightcoral;
+        flex-grow:0.2;
+    }
+    #BT{
+        flex-grow: 0.3;
+        background: lightpink;
+    }
+    #BM{
+        flex-grow: 0.3;
+        background: lightyellow;
+    }
+    #BB{
+        flex-grow: 0.3;
+        background: lightgreen;
+    }
+
+    /*Set on elements containing other elements, items,
+    to center those both horizontally and vertically.*/
+    .center-center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+<div class="horizontal-container">
+    <div id="AL"
+         class="center-center">
+        <p>AL</p>
+    </div>
+    <div class="vertical-container">
+        <div id="BT"
+             class="center-center">
+            <p>BT</p>
+        </div>
+        <div id="BM"
+             class="center-center">
+            <p>BM</p>
+        </div>
+        <div id="BB"
+             class="center-center">
+            <p>BB</p>
+        </div>
+    </div>
+    <div id="AR"
+         class="center-center">
+        <p>AR</p>
+    </div>
+</div>
+</body>
