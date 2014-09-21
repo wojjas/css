@@ -1,0 +1,45 @@
+<style>
+    /*.container{*/
+        /*display: flex;*/
+        /*height: 100%;*/
+        /*background: lightyellow;*/
+    /*}*/
+
+    #board {
+        margin: 15px;
+        clear: both;
+    }
+    #board .data-row-elem {
+        flex-grow: 0.25;
+        float:left;
+    }
+    #board .data-row {
+        clear: left;
+    }
+    #board .data-elem{
+        background: #04e141;
+        padding: 5px;
+        margin: 5px;
+    }
+    #board {
+        background: lightgreen;
+        float: left;
+    }
+</style>
+
+<body ng-controller="FlexBox2Ctrl">
+<div class="container">
+    <!--Without <table>, only CSS! -->
+    <div id="board">
+        <div ng-repeat="row in twoDArray"
+             class="data-row">
+            <div ng-repeat="col in row"
+                 class="data-row-elem">
+                <p class="data-elem">
+                    {{col}}
+                <p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

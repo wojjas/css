@@ -4,7 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.flexBox1',
-  'myApp.view2',
+  'myApp.flexBox2',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {

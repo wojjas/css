@@ -1,0 +1,22 @@
+'use strict';
+
+angular.module('myApp.flexBox2', ['ngRoute'])
+
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/flexBox2', {
+            templateUrl: 'flexBox2/flexBox2.html',
+            controller: 'FlexBox2Ctrl'
+        });
+    }])
+
+    .controller('FlexBox2Ctrl', ['$scope', function($scope) {
+                //Data:
+                var twoDArray = [
+                    ['0.0', '0.1', '0.2', '0.3'],
+                    ['1.0', '1.1', '1.2', '1.3'],
+                    ['2.0', '2.1', '2.2', '2.3'],
+                    ['3.0', '3.1', '3.2', '3.3']
+                ];
+
+                $scope.twoDArray = twoDArray;
+ }]);
