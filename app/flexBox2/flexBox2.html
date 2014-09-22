@@ -1,29 +1,33 @@
 <style>
-    /*.container{*/
-        /*display: flex;*/
+    .container{
+        display: flex;
+        flex-direction: column;
         /*height: 100%;*/
-        /*background: lightyellow;*/
-    /*}*/
+        background: lightyellow;
+    }
 
     #board {
-        margin: 15px;
-        clear: both;
-    }
-    #board .data-row-elem {
-        flex-grow: 0.25;
-        float:left;
+        /*Needed?*/
+        /*display: flex;*/
+        /*flex-direction: column;*/
+
+        background: lightgreen;
     }
     #board .data-row {
-        clear: left;
+        display: flex;
+        flex-direction: row;
     }
+
     #board .data-elem{
         background: #04e141;
         padding: 5px;
         margin: 5px;
     }
-    #board {
-        background: lightgreen;
-        float: left;
+    #board .image{
+        width: 100%;
+        height: auto;
+    }
+    #board .id{
     }
 </style>
 
@@ -33,11 +37,66 @@
     <div id="board">
         <div ng-repeat="row in twoDArray"
              class="data-row">
-            <div ng-repeat="col in row"
-                 class="data-row-elem">
-                <p class="data-elem">
-                    {{col}}
-                <p>
+            <div ng-repeat="col in row">
+                <div class="data-elem">
+                    <p class="id">{{col.id}}</p>
+                    <img class="image"
+                         src="{{col.img}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+    <style>
+        .board2{
+            background: lightyellow;
+        }
+        .data-row2{
+            display: flex;
+            flex-direction: row;
+        }
+        .data-row-elem2{
+            margin: 5px;
+            background: lightcyan;
+            width: 100%;
+        }
+    </style>
+
+    <div class="board2">
+        <div class="data-row2">
+            <div class="data-row-elem2">
+                <div class="data-elem">
+                    <p>0.0</p>
+                </div>
+            </div>
+            <div class="data-row-elem2">
+                <div class="data-elem">
+                    <p>0.1</p>
+                </div>
+            </div>
+            <div class="data-row-elem2">
+                <div class="data-elem">
+                    <p>0.2</p>
+                </div>
+            </div>
+        </div>
+        <div class="data-row2">
+            <div class="data-row-elem2">
+                <div class="data-elem">
+                    <p>1.0</p>
+                </div>
+            </div>
+            <div class="data-row-elem2">
+                <div class="data-elem">
+                    <p>1.1</p>
+                </div>
+            </div>
+            <div class="data-row-elem2">
+                <div class="data-elem">
+                    <p>2.2</p>
+                </div>
             </div>
         </div>
     </div>
