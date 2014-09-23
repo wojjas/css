@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.flexBox1',
   'myApp.flexBox2',
+  'myApp.equalWH',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
