@@ -7,6 +7,7 @@ angular.module('myApp', [
   'myApp.flexBox2',
   'myApp.equalWH',
   'myApp.equalWH2',
+  'myApp.equalWH3',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
