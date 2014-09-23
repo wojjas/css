@@ -1,47 +1,65 @@
 <style>
     .container{
-        display: flex;
-        flex-direction: column;
-        /*height: 100%;*/
-        background: lightyellow;
+        height: 500px;
+        width: 500px;
     }
 
-    #board {
-        /*Needed?*/
+    .board {
         /*display: flex;*/
         /*flex-direction: column;*/
-
+        /*height: 100%;*/
         background: lightgreen;
     }
-    #board .data-row {
+    .data-row {
         display: flex;
         flex-direction: row;
     }
-
-    #board .data-elem{
+    /*
+    Angular is surrounding .data-elem with a div with class ng-scope
+    this css takes care of that by repeating data-elems' stuff
+    */
+    .data-row > .ng-scope{
+        margin: 5px;
         background: #04e141;
-        padding: 5px;
+        width: 100%;
+    }
+    .data-elem{
+        background: #04e141;
         margin: 5px;
     }
-    #board .image{
-        width: 100%;
-        height: auto;
+    .img-container{
+        display: flex;
+        flex-grow:1;
     }
-    #board .id{
+    .img-back{
+        /*position: absolute;*/
+        width: 100%;
+        height: 100%;
+    }
+    .img-front{
+        width: auto;
     }
 </style>
 
 <body ng-controller="FlexBox2Ctrl">
 <div class="container">
     <!--Without <table>, only CSS! -->
-    <div id="board">
+    <div class="board">
         <div ng-repeat="row in twoDArray"
              class="data-row">
             <div ng-repeat="col in row">
                 <div class="data-elem">
-                    <p class="id">{{col.id}}</p>
-                    <img class="image"
-                         src="{{col.img}}">
+                        <!--<p>{{col.id}}</p>-->
+                    <div class="img-container">
+                        <img class="img-back"
+                             ng-src="{{col.imgBack}}"
+                             ng-click="handleCardClick(col)"
+                             ng-hide="col.isFrontSideShown"  >
+                        <img class="img-front"
+                             ng-src="{{col.imgFront}}"
+                             ng-click="handleCardClick(col)"
+                             ng-show="col.isFrontSideShown">
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,56 +67,74 @@
 
     <br>
     <hr>
-    <style>
-        .board2{
-            background: lightyellow;
-        }
-        .data-row2{
-            display: flex;
-            flex-direction: row;
-        }
-        .data-row-elem2{
-            margin: 5px;
-            background: lightcyan;
-            width: 100%;
-        }
-    </style>
+    <!--<style>-->
+        <!--.board2{-->
+            <!--background: lightyellow;-->
+        <!--}-->
+        <!--.data-row2{-->
+            <!--display: flex;-->
+            <!--flex-direction: row;-->
+        <!--}-->
+        <!--.data-elem2{-->
+            <!--margin: 5px;-->
+            <!--background: lightcyan;-->
+            <!--flex-grow: 1;-->
+        <!--}-->
+    <!--</style>-->
 
-    <div class="board2">
-        <div class="data-row2">
-            <div class="data-row-elem2">
-                <div class="data-elem">
-                    <p>0.0</p>
-                </div>
-            </div>
-            <div class="data-row-elem2">
-                <div class="data-elem">
-                    <p>0.1</p>
-                </div>
-            </div>
-            <div class="data-row-elem2">
-                <div class="data-elem">
-                    <p>0.2</p>
-                </div>
-            </div>
-        </div>
-        <div class="data-row2">
-            <div class="data-row-elem2">
-                <div class="data-elem">
-                    <p>1.0</p>
-                </div>
-            </div>
-            <div class="data-row-elem2">
-                <div class="data-elem">
-                    <p>1.1</p>
-                </div>
-            </div>
-            <div class="data-row-elem2">
-                <div class="data-elem">
-                    <p>2.2</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <!--<div class="board2">-->
+        <!--<div class="data-row2">-->
+            <!--<div class="data-elem2">-->
+                    <!--<p>0.0</p>-->
+                <!--<div class="img-container">-->
+                    <!--<img class="img-back"-->
+                         <!--ng-src="{{twoDArray[0][0].imgBack}}"-->
+                         <!--ng-click="handleCardClick2(twoDArray[0][0])"-->
+                         <!--ng-hide="col.isFrontSideShown">-->
+                    <!--<img class="img-front"-->
+                         <!--ng-src="{{twoDArray[0][0].imgFront}}"-->
+                         <!--ng-click="handleCardClick2(twoDArray[0][0])"-->
+                         <!--ng-show="col.isFrontSideShown">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="data-elem2">-->
+                    <!--<p>0.1</p>-->
+                <!--<div class="img-container">-->
+                    <!--<img class="img-back" ng-src="{{twoDArray[0][0].imgBack}}">-->
+                    <!--<img class="img-front" ng-src="{{twoDArray[0][0].imgFront}}">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="data-elem2">-->
+                    <!--<p>0.2</p>-->
+                <!--<div class="img-container">-->
+                    <!--<img class="img-back" ng-src="{{twoDArray[0][0].imgBack}}">-->
+                    <!--<img class="img-front" ng-src="{{twoDArray[0][0].imgFront}}">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="data-row2">-->
+            <!--<div class="data-elem2">-->
+                    <!--<p>1.0</p>-->
+                <!--<div class="img-container">-->
+                    <!--<img class="img-back" ng-src="{{twoDArray[0][0].imgBack}}">-->
+                    <!--<img class="img-front" ng-src="{{twoDArray[0][0].imgFront}}">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="data-elem2">-->
+                    <!--<p>1.1</p>-->
+                <!--<div class="img-container">-->
+                    <!--<img class="img-back" ng-src="{{twoDArray[0][0].imgBack}}">-->
+                    <!--<img class="img-front" ng-src="{{twoDArray[0][0].imgFront}}">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="data-elem2">-->
+                    <!--<p>2.2</p>-->
+                <!--<div class="img-container">-->
+                    <!--<img class="img-back" ng-src="{{twoDArray[0][0].imgBack}}">-->
+                    <!--<img class="img-front" ng-src="{{twoDArray[0][0].imgFront}}">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
