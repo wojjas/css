@@ -1,6 +1,90 @@
+<!--inspiration fetched from:
+ http://www.mademyday.de/css-height-equals-width-with-pure-css.html-->
+<style>
+    .image-container{
+        position:relative;
+        width:30%;          /*size relative parent element*/
+        /*min-height: 30%;*/
+
+        border: solid lightgrey 1px;
+        margin: 5px;
+    }
+    .image-container:before{
+        content: "";
+        display: block;
+        padding-top: 100%;   /*aspect ratio, try: 50%, 200%, 75%, 56.25%*/
+    }
+    .image-container-content{
+        position: absolute;
+        top:0;
+        left:0;
+        bottom: 0;
+        right: 0;
+
+        padding: 5px;
+    }
+    .image{
+        width:auto;
+        height: 100%;
+    }
+
+    .row{
+        display: flex;
+
+        justify-content: center;
+    }
+    .vertical-align{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+
+        background: lightyellow;
+    }
+
+</style>
+
 <body>
-<p> equalWH in div </p>
-<p>{{twoDArray[0][0].imgFront}}:</p>
-<img ng-src="{{twoDArray[0][0].imgFront}}">
+
+<div class="vertical-align">
+
+<div class="row">
+
+    <div class="image-container">
+        <div class="image-container-content">
+            <img class="image"
+                 ng-src="{{twoDArray[0][0].imgFront}}">
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="image-container-content">
+            <img class="image"
+                 ng-src="{{twoDArray[0][0].imgBack}}">
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="image-container">
+        <div class="image-container-content">
+            <img class="image"
+                 ng-src="{{twoDArray[0][0].imgBack}}">
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="image-container-content">
+            <img class="image"
+                 ng-src="{{twoDArray[0][0].imgFront}}">
+        </div>
+    </div>
+
+</div>
+
+</div>
+
 </body>
 </html>
