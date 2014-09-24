@@ -2,14 +2,21 @@
  http://www.mademyday.de/css-height-equals-width-with-pure-css.html-->
 <style>
 
+    .horizontal-container{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+    }
+
+    .side-pane{
+        flex-grow: 0.15;
+        background: #add8e6;
+    }
+
     /*Board with equal height and width*/
     .board-container{
         position:relative;
-        width: 50%;                 /*size relative parent element*/
-
-        border: solid lightgrey 1px;
-        margin: 5px;
-        background: #ff0000;
+        width: 80%;                 /*size relative parent element*/
     }
     .board-container:before{
         content: "";
@@ -29,7 +36,7 @@
     /*Image with equal height and width*/
     .image-container{
         position:relative;
-        width: 40%;                 /*size relative parent element*/
+        width: 100%;                 /*size relative parent element*/
 
         border: solid lightgrey 1px;
         margin: 5px;
@@ -53,22 +60,18 @@
     .image{
         max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
         max-width: 100%;
-        /*min-width: 100%;*/
     }
 
     .row{
         display: flex;
 
         justify-content: center;
-        background: lightgreen;
     }
     .vertical-align{
         display: flex;
         flex-direction: column;
         justify-content: center;
         height: 100%;
-
-        background: lightyellow;
     }
 
 </style>
@@ -76,6 +79,12 @@
 
 
 <body>
+
+<div class="horizontal-container">
+
+    <div class="side-pane">
+        <p>Left</p>
+    </div>
 
 <div class="board-container">
 
@@ -209,6 +218,11 @@
 
     </div>
 
+</div>
+
+    <div class="side-pane">
+        <p>Right</p>
+    </div>
 </div>
 
 </body>
