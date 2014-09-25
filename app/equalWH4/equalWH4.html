@@ -1,5 +1,17 @@
 <!--inspiration fetched from:
- http://www.mademyday.de/css-height-equals-width-with-pure-css.html-->
+ http://www.mademyday.de/css-height-equals-width-with-pure-css.html
+ So the idea here is to use the 1:1 board and 1:1 for each image.
+ Notice the row with all images with small height, the row keeps its height!
+ Still not 100% perfect:
+   *) The pictures aren't centered
+   *) The vertical-align is miss placed. Set background of board to see this.
+      Frankly I'm not sure how this works... what is then aligning the board vertically!?
+   *) When streched the board is not keeping it's 1:1 shape, nor are the image containers
+      but! the images don't overflow and that's good.
+
+eaualWH3 tries not to use this 1:1 trick, only flex-box to position the images/items and let them grow/shrink remaining
+their ratio and keeping them in center-center of their position.
+ -->
 <style>
 
     .horizontal-container{
@@ -60,6 +72,16 @@
     .image{
         max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
         max-width: 100%;
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .image-front{
+
+    }
+    .image-back{
+
     }
 
     .row{
@@ -158,7 +180,7 @@
                     <div class="image-container">
                         <div class="image-container-content">
                             <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
+                                 ng-src="{{twoDArray[1][2].imgFront}}">
                         </div>
                     </div>
 
@@ -172,14 +194,14 @@
                     <div class="image-container">
                         <div class="image-container-content">
                             <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
+                                 ng-src="{{twoDArray[1][2].imgFront}}">
                         </div>
                     </div>
 
                     <div class="image-container">
                         <div class="image-container-content">
                             <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
+                                 ng-src="{{twoDArray[1][2].imgFront}}">
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,9 @@
-<!--inspiration fetched from:
- http://www.mademyday.de/css-height-equals-width-with-pure-css.html-->
+<!-- The idea here:
+1) Use flex-box to position the images/items (don't use the 1:1 trick)
+2) let them grow/shrink remaining their ratio
+3) keeping them in center-center of their position.
+
+ -->
 <style>
 
     .horizontal-container{
@@ -9,74 +13,79 @@
     }
 
     .side-pane{
-        flex-grow: 0.15;
+        flex-grow: 0.05;
+        /*shring:0 and padding so that middle flex-item don't squeeze this*/
+        flex-shrink: 0;
+        padding-left: 5px;
+        padding-right: 5px;
+
         background: #add8e6;
     }
 
-    /*Board with equal height and width*/
-    .board-container{
-        position:relative;
-        width: 80%;                 /*size relative parent element*/
-    }
-    .board-container:before{
-        content: "";
-        display: block;
-        padding-top: 100%;   /*aspect ratio, try: 50%, 200%, 75%, 56.25%*/
-    }
-    .board-container-content{
-        position: absolute;
-        top:0;
-        left:0;
-        bottom: 0;
-        right: 0;
+    .board{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        flex-grow: 0.8;
 
-        padding: 5px;
+        justify-content: center;
+        /*align-items: center;*/
+
+        background: green;
     }
 
-    /*Image with equal height and width*/
     .image-container{
-        position:relative;
-        width: 100%;                 /*size relative parent element*/
-
+        flex:1;
         border: solid lightgrey 1px;
-        margin: 5px;
-    }
-    .image-container:before{
-        content: "";
-        display: block;
-        padding-top: 100%;   /*aspect ratio, try: 50%, 200%, 75%, 56.25%*/
-    }
-    .image-container-content{
-        position: absolute;
-        top:0;
-        left:0;
-        bottom: 0;
-        right: 0;
-
-        padding: 5px;
-        /*overflow: auto;     *//*show scroll only when needed. Needed if image allowed to*/
-                              /*overflow by setting height and width to 100% and auto respectively*/
     }
     .image{
         max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
         max-width: 100%;
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .rows{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
     }
 
     .row{
         display: flex;
+        flex-direction: row;
+        /*flex-grow: 0.5;*/
+        /*flex-shrink: 0;*/
 
-        justify-content: center;
+        margin: 5px;
+        background: lightcyan;
     }
+    p {
+        display: flex;
+        /*flex-grow: 1;*/
+    }
+
     .vertical-align{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 100%;
+        align-items: center;
+        flex-grow:0.9;
+
+        /*margin-bottom: auto;*/
+        /*marigin-top:auto;*/
+        /*margin-right: auto;*/
+        /*margin-left: auto;*/
+
+        background: blue;
+
+        /*overflow: auto;*/
     }
 
 </style>
-
-
 
 <body>
 
@@ -86,139 +95,88 @@
         <p>Left</p>
     </div>
 
-<div class="board-container">
+    <div class="vertical-align">
 
-    <div class="board-container-content">
+        <div class="board">
+            <div class="rows">
 
-        <div class="vertical-align">
-            <div class="row">
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                <div class="row">
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[0][0].imgFront}}">
                     </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                    <div class="image-container">
                         <img class="image"
-                             ng-src="{{twoDArray[0][0].imgBack}}">
+                             ng-src="{{twoDArray[1][2].imgFront}}">
                     </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[0][0].imgFront}}">
                     </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[1][2].imgFront}}">
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                <div class="row">
+                    <div class="image-container">
                         <img class="image"
-                             ng-src="{{twoDArray[0][0].imgBack}}">
+                             ng-src="{{twoDArray[1][2].imgFront}}">
+                    </div>
+                    <div class="image-container">
+                        <img class="image"
+                             ng-src="{{twoDArray[1][2].imgFront}}">
+                    </div>
+                    <div class="image-container">
+                        <img class="image"
+                             ng-src="{{twoDArray[1][2].imgFront}}">
+                    </div>
+                    <div class="image-container">
+                        <img class="image"
+                             ng-src="{{twoDArray[1][2].imgFront}}">
                     </div>
                 </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                <div class="row">
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[0][0].imgFront}}">
                     </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                    <div class="image-container">
+                        <img class="image"
+                             ng-src="{{twoDArray[0][0].imgBack}}">
+                    </div>
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[0][0].imgFront}}">
                     </div>
+                    <div class="image-container">
+                        <img class="image"
+                             ng-src="{{twoDArray[1][2].imgFront}}">
+                    </div>
                 </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                <div class="row">
+                    <div class="image-container">
+                        <img class="image"
+                             ng-src="{{twoDArray[0][0].imgFront}}">
+                    </div>
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[0][0].imgBack}}">
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                    <div class="image-container">
                         <img class="image"
-                             ng-src="{{twoDArray[0][0].imgBack}}">
+                             ng-src="{{twoDArray[0][0].imgFront}}">
                     </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
+                    <div class="image-container">
                         <img class="image"
                              ng-src="{{twoDArray[1][2].imgFront}}">
                     </div>
                 </div>
 
-                <div class="image-container">
-                    <div class="image-container-content">
-                        <img class="image"
-                             ng-src="{{twoDArray[0][0].imgFront}}">
-                    </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
-                        <img class="image"
-                             ng-src="{{twoDArray[0][0].imgBack}}">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="image-container">
-                    <div class="image-container-content">
-                        <img class="image"
-                             ng-src="{{twoDArray[0][0].imgBack}}">
-                    </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
-                        <img class="image"
-                             ng-src="{{twoDArray[0][0].imgFront}}">
-                    </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
-                        <img class="image"
-                             ng-src="{{twoDArray[0][0].imgFront}}">
-                    </div>
-                </div>
-
-                <div class="image-container">
-                    <div class="image-container-content">
-                        <img class="image"
-                             ng-src="{{twoDArray[0][0].imgBack}}">
-                    </div>
-                </div>
             </div>
         </div>
 
     </div>
-
-</div>
 
     <div class="side-pane">
         <p>Right</p>
@@ -226,4 +184,3 @@
 </div>
 
 </body>
-</html>

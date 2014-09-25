@@ -1,0 +1,152 @@
+<!--inspiration fetched from:
+http://webdesign.about.com/od/beginningcss/a/aa012207.htm
+http://designshack.net/articles/css/how-to-center-anything-with-css/
+http://www.brunildo.org/test/img_center.html
+ -->
+<style>
+    /*Centers the text horizontally, width can be absolute or %*/
+    #text-in-div{
+        border: solid lightgray 1px;
+    }
+    /*centers the text inside the div*/
+    #text-in-div .text-style{
+        text-align: center;
+        background: lightyellow;
+    }
+    /*Centers the div*/
+    #text-in-div .text-center{
+        margin-left: auto;
+        margin-right:auto;
+        width: 80%;
+    }
+
+    /*Centers the img horizontally in its div*/
+    #img-in-div{
+        border: solid lightgray 1px;
+        margin-top: 5px;
+
+        /*width: 80%;*/
+        /*margin-left: auto;*/
+        /*margin-right:auto;*/
+    }
+    /*Set this class on img, not the div*/
+    #img-in-div .img-center{
+        display:block;              /*<--- this is important for img to work for all browsers*/
+        margin-left: auto;
+        margin-right:auto;
+    }
+    #img-in-div .img-style{
+        width: 10%;                 /*NB this doesn't make daisy 90% smaller, this is relative the img's container*/
+        /*height has no effect here*/
+        /*max-height: 10%;*/
+    }
+
+    /*Vertically centering elements without flexbox*/
+    #div-vertical-center{
+        border: solid lightgray 1px;
+        margin-top: 5px;
+        height: 100px;
+        background: lightyellow;
+    }
+    #div-vertical-center .vertical-center{
+        display: table-cell;
+        min-height: 12em;
+        vertical-align: middle;
+        /*align-items: center;*/
+    }
+    /*#div-vertical-center .img-style{*/
+        /*height: 70%;*/
+    /*}*/
+
+    #div-vertical-center .vcenter {
+        min-height: 12em;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    #div-vertical-center .text-style{
+        background: #add8e6;
+    }
+
+    #div-vertical-center-flexbox{
+        border: solid lightgray 1px;
+        margin-top: 5px;
+        height: 150px;
+        background: lightyellow;
+    }
+    #div-vertical-center-flexbox .vertical-center{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        /*justify-content: center;*/
+
+        background: lightpink;
+    }
+    #div-vertical-center-flexbox .text-center{
+        display: flex;
+        flex-grow: 1;
+        height: 100%;
+
+        /*uncomment each at a time and see what happens:*/
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+
+        background: #add8e6;
+    }
+    #div-vertical-center-flexbox .img-center{
+        display: flex;
+        flex-grow: 1;
+        height: 100%;
+
+        /*uncomment each at a time and see what happens:*/
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+
+        background: #add8e6;
+    }
+    #div-vertical-center-flexbox .img-style{
+        max-width: 55%;
+        max-height: 55%;
+    }
+
+</style>
+
+<body>
+
+<div id="text-in-div">
+        <p class="text-center text-style">This is a paragraph, a long text with no line brakes on this first line</p>
+</div>
+
+<div id="img-in-div">
+    <img class="img-center img-style"
+         src="img/daisy-standing.jpg">
+</div>
+
+<!--Without flex-box:-->
+<div id="div-vertical-center">
+    <!--<div class="vertical-center">-->
+        <!--<img class="img-style"-->
+             <!--src="img/daisy-standing.jpg">-->
+    <!--</div>-->
+    <div class="vcenter">
+        <p class="text-style">Vertically align without flex-box (doesn't work)</p>
+    </div>
+</div>
+
+<!--With flex-box:-->
+<div id="div-vertical-center-flexbox">
+    <div class="vertical-center">
+        <p class="text-center">Vertical align of text with flex-box</p>
+    </div>
+    <div class="vertical-center">
+        <img src="img/daisy-standing.jpg" class="img-center img-style">
+        <!--<div class="img-center">-->
+
+        <!--</div>-->
+    </div>
+</div>
+
+</body>
+</html>

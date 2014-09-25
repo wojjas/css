@@ -9,6 +9,7 @@ angular.module('myApp', [
   'myApp.equalWH2',
   'myApp.equalWH3',
   'myApp.equalWH4',
+  'myApp.center',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
