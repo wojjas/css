@@ -3,7 +3,7 @@
  So the idea here is to use the 1:1 board and 1:1 for each image.
  Notice the row with all images with small height, the row keeps its height!
  Still not 100% perfect:
-   *) The pictures aren't centered
+   *) The pictures aren't vertically centered yet
    *) The vertical-align is miss placed. Set background of board to see this.
       Frankly I'm not sure how this works... what is then aligning the board vertically!?
    *) When streched the board is not keeping it's 1:1 shape, nor are the image containers
@@ -69,7 +69,7 @@ their ratio and keeping them in center-center of their position.
         /*overflow: auto;     *//*show scroll only when needed. Needed if image allowed to*/
         /*overflow by setting height and width to 100% and auto respectively*/
     }
-    .image{
+    .image-back{
         max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
         max-width: 100%;
 
@@ -78,10 +78,13 @@ their ratio and keeping them in center-center of their position.
         margin-right: auto;
     }
     .image-front{
+        max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
+        max-width: 100%;
 
-    }
-    .image-back{
-
+        /*horizontally center*/
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .row{
@@ -109,137 +112,28 @@ their ratio and keeping them in center-center of their position.
     </div>
 
     <div class="board-container">
-
         <div class="board-container-content">
-
             <div class="vertical-align">
-                <div class="row">
 
-                    <div class="image-container">
+                <div ng-repeat="row in twoDArray"
+                     class="row">
+                    <div ng-repeat="col in row"
+                         class="image-container"
+                            ng-click="handleCardClick(col)">
                         <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
-                        </div>
-                    </div>
 
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
-                        </div>
-                    </div>
+                            <img class="image-back"
+                                 ng-src="{{col.imgBack}}"
+                                 ng-hide="col.isFrontSideShown">
+                            <img class="image-front"
+                                 ng-src="{{col.imgFront}}"
+                                 ng-show="col.isFrontSideShown">
 
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[1][2].imgFront}}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[1][2].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[1][2].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[1][2].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[1][2].imgFront}}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgFront}}">
-                        </div>
-                    </div>
-
-                    <div class="image-container">
-                        <div class="image-container-content">
-                            <img class="image"
-                                 ng-src="{{twoDArray[0][0].imgBack}}">
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <div class="side-pane">

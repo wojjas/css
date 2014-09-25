@@ -16,7 +16,12 @@
     }
     /*
     Angular is surrounding .data-elem with a div with class ng-scope
-    this css takes care of that by repeating data-elems' stuff
+    this css takes care of that by repeating data-elems' stuff.
+    To avoid this "hack" add a class to the ng-repeat div! in this case
+    <div ng-repeat=...
+         class="data-elems"
+    then BOTH ng-scope and data-elems will get added and this is not needed
+    see equalWH4 to see how it's done.
     */
     .data-row > .ng-scope{
         margin: 5px;

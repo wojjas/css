@@ -18,10 +18,10 @@ angular.module('myApp.equalWH4', ['ngRoute'])
                 {id:'0.2', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false},
                 {id:'0.3', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false}],
 
-            [{id:'1.0', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false},
-                {id:'1.1', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false},
+            [{id:'1.0', imgBack:'./img/proXoftLogo.png', imgFront:'./img/DuckTalesHueyDewey&Louie.png', isFrontSideShown:false},
+                {id:'1.1', imgBack:'./img/proXoftLogo.png', imgFront:'./img/DuckTalesHueyDewey&Louie.png', isFrontSideShown:false},
                 {id:'1.2', imgBack:'./img/proXoftLogo.png', imgFront:'./img/DuckTalesHueyDewey&Louie.png', isFrontSideShown:false},
-                {id:'1.3', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false}],
+                {id:'1.3', imgBack:'./img/proXoftLogo.png', imgFront:'./img/DuckTalesHueyDewey&Louie.png', isFrontSideShown:false}],
 
             [{id:'2.0', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false},
                 {id:'2.1', imgBack:'./img/proXoftLogo.png', imgFront:'./img/donald-portrait.jpg', isFrontSideShown:false},
