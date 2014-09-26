@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.equalWH4', ['ngRoute'])
+angular.module('myApp.equalWH4', ['ngRoute', 'ngAnimate'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/equalWH4', {

@@ -4,7 +4,7 @@
  Notice the row with all images with small height, the row keeps its height!
 
  problems:
-   *) The vertical-align is missplaced. Set background of board to see this.
+   *) The vertical-align is misplaced. Set background of board to see this.
       Frankly I'm not sure how this works... but it does :-)
 
 eaualWH3 tries not to use this 1:1 trick, only flex-box to position the images/items and let them grow/shrink remaining
@@ -74,9 +74,15 @@ their ratio and keeping them in center-center of their position.
         justify-content: center;
     }
     .image-back{
-        max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
+        /*To make transition animate nicely*/
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        max-height: 100%;
         max-width: 100%;
 
+        /*horizontally center*/
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -103,8 +109,16 @@ their ratio and keeping them in center-center of their position.
         height: 100%;
     }
 
-</style>
+    /*Animation*/
+    .animate-show {
+        -webkit-transition:all 0.7s;
+        transition:all 0.7s;
+    }
+    .animate-show.ng-hide {
+        opacity:0;
+    }
 
+</style>
 
 
 <body>
@@ -123,13 +137,13 @@ their ratio and keeping them in center-center of their position.
                      class="row">
                     <div ng-repeat="col in row"
                          class="image-container"
-                            ng-click="handleCardClick(col)">
+                         ng-click="handleCardClick(col)">
                         <div class="image-container-content image-vertical-align">
 
-                            <img class="image-back"
+                            <img class="image-back animate-show"
                                  ng-src="{{col.imgBack}}"
                                  ng-hide="col.isFrontSideShown">
-                            <img class="image-front"
+                            <img class="image-front animate-show"
                                  ng-src="{{col.imgFront}}"
                                  ng-show="col.isFrontSideShown">
 
