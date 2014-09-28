@@ -75,17 +75,15 @@ their ratio and keeping them in center-center of their position.
     }
     .image-back{
         /*To make transition animate nicely*/
-        position: absolute;
-        top: 0;
-        left: 0;
+        /*But this puts the back-image off horizontal center*/
+        /*Possible solution is not to use absolute positioning and use another animation, animate height instead*/
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*left: 0;*/
+        flex-shrink: 0;
 
         max-height: 100%;
         max-width: 100%;
-
-        /*horizontally center*/
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
     .image-front{
         max-height: 100%;     /*Experiment with 150% for image-front, and no overflow in parent container to let image flow over*/
@@ -111,8 +109,8 @@ their ratio and keeping them in center-center of their position.
 
     /*Animation*/
     .animate-show {
-        -webkit-transition:all 0.7s;
-        transition:all 0.7s;
+        -webkit-transition:all 0.4s;
+        transition:all 0.4s;
     }
     .animate-show.ng-hide {
         opacity:0;
