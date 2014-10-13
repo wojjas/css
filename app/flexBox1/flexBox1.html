@@ -3,14 +3,31 @@
         height: 100%;
     }
     .horizontal-container{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
         flex-direction: row;
         background: #add8e6;
         height: 100%;
     }
     .vertical-container{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-flex: 0.6;
+        -webkit-flex-grow: 0.6;
+        -ms-flex-positive: 0.6;
         flex-grow: 0.6;
         height: 100%;
         margin: auto;   /*absorb extra space, makes this item centered in both axis*/
@@ -19,17 +36,29 @@
 
     #AL, #AR{
         background: lightcoral;
+        -webkit-box-flex:0.2;
+        -webkit-flex-grow:0.2;
+        -ms-flex-positive:0.2;
         flex-grow:0.2;
     }
     #BT{
+        -webkit-box-flex: 0.3;
+        -webkit-flex-grow: 0.3;
+        -ms-flex-positive: 0.3;
         flex-grow: 0.3;
         background: lightpink;
     }
     #BM{
+        -webkit-box-flex: 0.3;
+        -webkit-flex-grow: 0.3;
+        -ms-flex-positive: 0.3;
         flex-grow: 0.3;
         background: lightyellow;
     }
     #BB{
+        -webkit-box-flex: 0.3;
+        -webkit-flex-grow: 0.3;
+        -ms-flex-positive: 0.3;
         flex-grow: 0.3;
         background: lightgreen;
     }
@@ -37,8 +66,17 @@
     /*Set on elements containing other elements, items,
     to center those both horizontally and vertically.*/
     .center-center{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 </style>

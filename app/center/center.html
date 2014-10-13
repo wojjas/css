@@ -4,20 +4,35 @@ http://designshack.net/articles/css/how-to-center-anything-with-css/
 http://www.brunildo.org/test/img_center.html
  -->
 <style>
-    /*Centers the text horizontally, width can be absolute or %*/
-    #text-in-div{
-        border: solid lightgray 1px;
-    }
-    /*centers the text inside the div*/
-    #text-in-div .text-style{
+
+    /*Common:*/
+    .center-text{
         text-align: center;
-        background: lightyellow;
     }
-    /*Centers the div*/
-    #text-in-div .text-center{
+    .center-block-horizontally {
+        display: block;     /*centers img as well*/
         margin-left: auto;
         margin-right:auto;
+    }
+
+    /*Uses combinations of "common" styles*/
+    #combine-classes{
+        border: solid lightgray 1px;
+        margin-top: 5px;
+    }
+    #combine-classes .div-style{
         width: 80%;
+        background: #add8e6;
+    }
+    #combine-classes .radio-buttons{
+        min-width: 10%;     /*hard to know what to set this to make it look in center*/
+        max-width:10%;      /*good to use min and max to make button and tex stay on the same line*/
+        background: lightcyan;
+    }
+    #combine-classes .radio-buttons-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
 
     /*Centers the img horizontally in its div*/
@@ -115,12 +130,32 @@ http://www.brunildo.org/test/img_center.html
 
 <body>
 
-<div id="text-in-div">
-        <p class="text-center text-style">This is a paragraph, a long text with no line brakes on this first line</p>
+<div id="combine-classes">
+    <div class="div-style"><p>Div 1, only div-style applied, no centering</p></div>
+    <div class="div-style center-block-horizontally">
+        <p>Div 2, centered and text left-align by default</p>
+        <p>Lets have a long line of text without any line breaks to help with the formatting so we can see how it will get formatted.</p>
+    </div>
+    <div class="div-style center-block-horizontally center-text">
+        <p>Div 3, text centered with text-align:center</p>
+        <p>Lets have a long line of text without any line breaks to help with the formatting so we can see how it will get formatted.</p>
+    </div>
+    <div class="div-style center-block-horizontally">
+        <div class="radio-buttons center-block-horizontally">
+        <input type="radio" name="sex" value="male">Male<br>
+        <input type="radio" name="sex" value="female">Female
+        </div>
+    </div>
+    <div class="div-style center-block-horizontally radio-buttons-container">
+        <div class="radio-buttons">
+            <input type="radio" name="sex" value="male">Male<br>
+            <input type="radio" name="sex" value="female">Female
+        </div>
+    </div>
 </div>
 
 <div id="img-in-div">
-    <img class="img-center img-style"
+    <img class="center-block-horizontally img-style"
          src="img/daisy-standing.jpg">
 </div>
 
